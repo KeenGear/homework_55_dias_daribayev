@@ -5,7 +5,7 @@
     {% for task in tasks %}
         <div class="container d-flex">
             <div class="d-flex flex-row bd-highlight mb-3">
-                <div class="card d-flex" style="width: 18rem;">
+                <div class="card d-flex" style="width: 50rem;">
                   <div class="card-body">
                     <h5 class="card-title">{{ task.title }}</h5>
                     <h6 class="card-subtitle mb-2" style="color: {{ task.get_status_color  }};">{{ task.status }}</h6>

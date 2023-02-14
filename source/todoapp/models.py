@@ -11,7 +11,7 @@ class Tasks(models.Model):
         (COMPLETED, 'Completed'),
         (HELD, 'Held'),
     )
-    title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Article')
+    title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Title')
     text = models.TextField(max_length=1000, null=False, blank=False, verbose_name='Text')
     author = models.CharField(max_length=40, null=False, blank=False, default='Author', verbose_name='Author')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=ONGOING)
