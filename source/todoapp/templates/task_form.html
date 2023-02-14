@@ -1,11 +1,13 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <h1>{% if form.instance.pk %}Update{% else %}Create{% endif %} Task</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'task_list' %}">Back To Task List</a>
+    <div class="container">
+        <h1>{% if form.instance.pk %}Update{% else %}Create{% endif %} Task</h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'task_list' %}">Back To Task List</a>
+    </div>
 {% endblock %}

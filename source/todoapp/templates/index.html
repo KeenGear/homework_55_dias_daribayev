@@ -7,13 +7,14 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <h1 style="text-align: center">Task List</h1>
     <nav>
-        <ul>
+        <ul style="text-align: center">
             <li>
-                <a href="{% url 'task_list' %}">Tasks List</a>
+                <a style="text-decoration: none" href="{% url 'task_list' %}">Tasks List</a>
             </li>
             <li>
-                <a href="{% url 'task_list' %}">Create New Task</a>
+                <a style="text-decoration: none" href="{% url 'task_create' %}">Create New Task</a>
             </li>
         </ul>
     </nav>

@@ -2,19 +2,22 @@
 
 {% block content %}
     <div class="container">
-        <h1>Task List</h1>
-        <ul>
-            {% for task in tasks %}
-                <li>
-                    {{ task.title }}
-                    {{ task.text }}
-                    <a href="{% url 'task_delete' task.pk %}">Delete</a>
-                    <a href="{% url 'task_update' task.pk %}">Update</a>
-                </li>
-        {% empty %}
-            <li>No tasks</li>
-        {% endfor %}
-        </ul>
-        <a href="{% url 'task_create' %}">Create New Task</a>
+    {% for task in tasks %}
+        <div class="container d-flex">
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="card d-flex" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <h6 class="card-subtitle mb-2" style="color: {{ task.get_status_color  }};">{{ task.status }}</h6>
+                    <p class="card-text">{{ task.text }}</p>
+                    <a href="{% url 'task_update' task.pk %}" class="card-link">Update</a>
+                    <a href="{% url 'task_delete' task.pk %}" class="card-link">Delete</a>
+                  </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row">
+            </div>
+        </div>
+    {% endfor %}
     </div>
 {% endblock %}
