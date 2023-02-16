@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="card d-flex" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'task_view' task.pk %}" style="text-decoration: none; color: black">{{ task.title }}</a>
+                </h5>
+                <h6 class="card-subtitle mb-2" style="color: {{ task.get_status_color  }};">{{ task.status }}</h6>
+                <p class="card-text">{{ task.text }}</p>
+                <p class="card-text">{{ task.description }}</p>
+                <a href="{% url 'task_update' task.pk %}" class="card-link">Update</a>
+                <a href="{% url 'task_delete' task.pk %}" class="card-link">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
