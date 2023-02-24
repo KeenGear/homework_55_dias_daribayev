@@ -1,0 +1,26 @@
+[
+{
+    "model": "todoapp.tasks",
+    "pk": 2,
+    "fields": {
+        "title": "sodas",
+        "description": "Description",
+        "author": "Authorsadasd",
+        "status": "Completed",
+        "created_at": "2023-02-24T09:15:28.527Z",
+        "updated_at": "2023-02-24T09:15:28.527Z"
+    }
+},
+{
+    "model": "todoapp.tasks",
+    "pk": 4,
+    "fields": {
+        "title": "Some Text",
+        "description": "Description",
+        "author": "Author",
+        "status": "Held",
+        "created_at": "2023-02-24T09:26:39.154Z",
+        "updated_at": "2023-02-24T09:26:39.154Z"
+    }
+}
+]
