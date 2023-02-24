@@ -13,7 +13,9 @@ class Tasks(models.Model):
     )
     title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Title')
     text = models.TextField(max_length=100, null=False, blank=False, verbose_name='Text')
-    description = models.TextField(max_length=100, null=False, blank=False,default='Description', verbose_name='Description')
+    img = models.URLField()
+    description = models.TextField(max_length=100, null=False, blank=False, default='Description',
+                                   verbose_name='Description')
     author = models.CharField(max_length=40, null=False, blank=False, default='Author', verbose_name='Author')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=ONGOING)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Crated at')
@@ -28,5 +30,4 @@ class Tasks(models.Model):
         return status_colors.get(self.status, 'gray')
 
     def __str__(self):
-        return "{}. {}".format(self.pk, self.title)
-
+        return f"{self.pk}. {self.title}"
