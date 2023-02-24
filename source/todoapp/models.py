@@ -12,8 +12,6 @@ class Tasks(models.Model):
         (HELD, 'Held'),
     )
     title = models.CharField(max_length=200, null=False, blank=False, verbose_name='Title')
-    text = models.TextField(max_length=100, null=False, blank=False, verbose_name='Text')
-    img = models.URLField()
     description = models.TextField(max_length=100, null=False, blank=False, default='Description',
                                    verbose_name='Description')
     author = models.CharField(max_length=40, null=False, blank=False, default='Author', verbose_name='Author')
