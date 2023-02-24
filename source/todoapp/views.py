@@ -1,38 +1,36 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Tasks
-from .forms import TasksForm
 
 
-# Create your views here.
-
-def task_list(request):
-    tasks = Tasks.objects.all()
-    return render(request, 'task_list.html', {'tasks': tasks})
-
-
-def task_create(request):
-    form = TasksForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('task_list')
-    return render(request, 'task_form.html', {'form': form})
+class TaskListView(ListView):
+    model = Tasks
+    template_name = 'task_list.html'
+    context_object_name = 'tasks'
+    ordering = ['-created_at']
 
 
-def task_update(request, pk):
-    task = get_object_or_404(Tasks, pk=pk)
-    form = TasksForm(request.POST or None, instance=task)
-    if form.is_valid():
-        form.save()
-        return redirect('task_list')
-    return render(request, 'task_form.html', {'form': form})
+class TaskDetailView(DetailView):
+    model = Tasks
+    template_name = 'task_view.html'
+    context_object_name = 'task'
 
 
-def task_delete(request, pk):
-    task = get_object_or_404(Tasks, pk=pk)
-    task.delete()
-    return redirect('task_list')
+class TaskCreateView(CreateView):
+    model = Tasks
+    template_name = 'task_form.html'
+    fields = ['title', 'text', 'img', 'description', 'author', 'status']
+    success_url = reverse_lazy('tasks')
 
 
-def task_view(request, pk):
-    task = get_object_or_404(Tasks, pk=pk)
-    return render(request, 'task_view.html', {'task': task})
+class TaskUpdateView(UpdateView):
+    model = Tasks
+    template_name = 'task_form.html'
+    fields = ['title', 'text', 'img', 'description', 'author', 'status']
+    success_url = reverse_lazy('tasks')
+
+
+class TaskDeleteView(DeleteView):
+    model = Tasks
+    template_name = 'task_confirm_delete.html'
+    success_url = reverse_lazy('tasks')
